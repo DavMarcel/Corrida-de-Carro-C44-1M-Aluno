@@ -69,7 +69,16 @@ class Player {
     playerInfoRef.on("value", data => {
       allPlayers = data.val();
     });
+  } //CRIE AS VALIDAÇÕES PARA O GETCARSATEND
+  getCarsAtEnd(){
+    database.ref('carsEnd').on("value",(data)=>{
+      this.rank = data.val()
+    })
   }
-
-  //CRIE AS VALIDAÇÕES PARA O GETCARSATEND
-} 
+  
+  static updateCarsAtEns(rank) {
+    database.ref("/").update({
+      carsAtEnd: rank
+    });
+  }
+}
